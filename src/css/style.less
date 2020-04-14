@@ -1,0 +1,53 @@
+@import 'base.less'; // пример импорта (похоже на SCSS)
+@color_black: #000000; // пример переменной, теперь вместо цвета можно вставлять @color_black
+@offset: 30px; //межколоночник
+@offset_one_side: @offset / 2; //операции арифметические
+
+// это секция главная флексы тут чтобы просто выровнять по горизонту vh , tac выравнивает все карточки по вертикали
+.home {
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center; //по вертикальной оси все стоят ровно (вправо и влево не убегают)
+  align-content: center; // по горизонтальной оси ровно стоят (причем всегда)
+  padding: 15px 0;
+}
+
+//это контейнер - задаем основные отстувы по бокам
+.wrapper {
+  max-width: 1140px;
+  flex-basis: 100%;
+  margin: 0 auto;
+  padding:0 15px;
+}
+
+// это строка  - все элементы 4 картинки чередуются джастифаем
+.row { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+// это колонки (тут только img) в кальке width ЭТО ШИРИНА КОЛОНОК!!!, ТО ЕСТЬ ФОТКИ!! ПРОСТО (.col !!!)
+.col {
+  margin: 15px;
+  box-sizing: border-box;
+  width: calc(100% / 12 * 3 - 30px)
+}
+  
+  @media screen and (max-width: 860px){
+    .col {
+      width: calc(100% / 12 * 6 - 30px)
+    }
+    img {
+      width: 250px;
+    }
+  }
+  @media screen and (max-width: 560px){
+    .col {
+      width: calc(100% / 12 * 12 - 30px)
+    }
+    img {
+      width: 300px;
+    }
+  }
